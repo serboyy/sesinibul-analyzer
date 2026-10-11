@@ -14,7 +14,7 @@ under its applicable licenses.
 `bash build.sh` starts from a clean checkout on Linux with git, Python 3,
 pkg-config and Node available. It installs the pinned official Emscripten SDK
 inside `.build`, fetches pinned Essentia and Eigen sources, builds only the
-required algorithm graph with Kiss FFT, and runs smoke tests. Compiler flags
+required algorithm graph with FFTW 3.3.11, and runs smoke tests. Compiler flags
 are modified explicitly by `prepare-build.py`; algorithms are not modified.
 The new C API avoids legacy JavaScript runtime dynamic compilation.
 

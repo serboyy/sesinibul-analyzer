@@ -18,6 +18,7 @@ def revision(path):
     return subprocess.check_output(['git', '-C', str(path), 'rev-parse', 'HEAD'], text=True).strip()
 
 sources = {
+    'fftw': {'url': 'https://www.fftw.org/fftw-3.3.11.tar.gz', 'sha256': '5630c24cdeb33b131612f7eb4b1a9934234754f9f388ff8617458d0be6f239a1'},
     'essentia': {'repository': 'https://github.com/MTG/essentia.git', 'revision': revision(build / 'essentia')},
     'eigen': {'repository': 'https://gitlab.com/libeigen/eigen.git', 'revision': revision(build / 'eigen')},
     'emsdk': {'repository': 'https://github.com/emscripten-core/emsdk.git', 'revision': revision(build / 'emsdk')}
@@ -26,6 +27,10 @@ expected = {'essentia': 'c6a28b0b7e540019a3676bd3322c8b94b06e66b1',
             'eigen': '3147391d946bb4b6c68edd901f2add6ac1f31f8c',
             'emsdk': '0b3bcbc3b005cbb811d48e497eabcc6846d43001'}
 for name, value in sources.items():
+    if name == 'fftw':
+        if hashlib.sha256((build / 'fftw.tar.gz').read_bytes()).hexdigest() != value['sha256']:
+            raise RuntimeError('FFTW source archive hash mismatch')
+        continue
     if value['revision'] != expected[name]:
         raise RuntimeError('Source revision mismatch: ' + name)
 
@@ -55,6 +60,7 @@ with (dist / 'corresponding-source.tar.gz').open('wb') as raw:
                     add_file(archive, path, 'analyzer', root)
             for name in ['essentia', 'eigen']:
                 add_file(archive, build / name, 'dependencies/' + name, build / name)
+            add_file(archive, build / 'fftw-source', 'dependencies/fftw', build / 'fftw-source')
             # SDK installer/config source, not installed multi-GB compiler output.
             # Compilers/general-purpose tools are not part of the linked work.
             sdk = build / 'emsdk'

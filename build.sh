@@ -23,15 +23,24 @@ fetch_source https://github.com/emscripten-core/emsdk.git "$emsdk_revision" "$ta
 "$task_build/emsdk/emsdk" activate 3.1.64
 source "$task_build/emsdk/emsdk_env.sh"
 export EMSCRIPTEN="$EMSDK/upstream/emscripten"
+fftw_sha256=5630c24cdeb33b131612f7eb4b1a9934234754f9f388ff8617458d0be6f239a1
+curl -fsSL https://www.fftw.org/fftw-3.3.11.tar.gz -o "$task_build/fftw.tar.gz"
+printf '%s  %s\n' "$fftw_sha256" "$task_build/fftw.tar.gz" | sha256sum -c -
+mkdir "$task_build/fftw-source" "$task_build/fftw-build"
+tar -xzf "$task_build/fftw.tar.gz" -C "$task_build/fftw-source" --strip-components=1
+cd "$task_build/fftw-build"
+emconfigure "$task_build/fftw-source/configure" --host=wasm32-unknown-emscripten --enable-float --disable-fortran --disable-shared --disable-threads --prefix="$task_build/fftw-prefix"
+emmake make -j2
+emmake make install
 mkdir -p "$task_build/pkgconfig"
 python3 "$task_root/prepare-build.py" "$task_build" "$eigen_revision"
 export PKG_CONFIG_PATH="$task_build/pkgconfig"
 cd "$task_build/essentia"
-emconfigure python3 waf configure --emscripten --build-static --lightweight= --fft=KISS --pkg-config-path="$task_build/pkgconfig" \
+emconfigure python3 waf configure --emscripten --build-static --lightweight=fftw --fft=FFTW --pkg-config-path="$task_build/pkgconfig:$task_build/fftw-prefix/lib/pkgconfig" \
   --ignore-algos=Spline,CubicSpline,NNLSChroma,SNR \
   --include-algos=PercivalBpmEstimator,PercivalEnhanceHarmonics,PercivalEvaluatePulseTrains,KeyExtractor,FrameCutter,Windowing,Spectrum,Magnitude,FFT,UnaryOperator,Flux,IIR,AutoCorrelation,PeakDetection,SpectralPeaks,SpectralWhitening,HPCP,Key,NoiseAdder
 emmake python3 waf build -j2
-em++ -Oz -std=c++14 -fexceptions "$task_root/engine.cpp" build/src/libessentia.a \
+em++ -Oz -std=c++14 -fexceptions "$task_root/engine.cpp" build/src/libessentia.a "$task_build/fftw-prefix/lib/libfftw3f.a" \
   -Isrc -Isrc/essentia -Isrc/essentia/scheduler -Isrc/essentia/streaming \
   -Isrc/essentia/streaming/algorithms -Isrc/essentia/utils -Isrc/3rdparty -I"$task_build/eigen" -DEIGEN_MPL2_ONLY \
   -DSB_ESSENTIA_REVISION=\""$essentia_revision"\" \
