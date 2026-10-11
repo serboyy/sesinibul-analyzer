@@ -1,5 +1,9 @@
 {
   "sources": {
+    "fftw": {
+      "url": "https://www.fftw.org/fftw-3.3.11.tar.gz",
+      "sha256": "5630c24cdeb33b131612f7eb4b1a9934234754f9f388ff8617458d0be6f239a1"
+    },
     "essentia": {
       "repository": "https://github.com/MTG/essentia.git",
       "revision": "c6a28b0b7e540019a3676bd3322c8b94b06e66b1"
@@ -15,9 +19,9 @@
   },
   "compiler": "Emscripten 3.1.64",
   "sha256": {
-    "engine.js": "298840eaab56d044ea3c06b5be4f71107000f7f8c28ce22d11cf82b54f9d4971",
-    "engine.wasm": "7dc24cc715204884bb32842d223a83d5bfe9a796a01c146e4b39683dbe224123",
-    "corresponding-source.tar.gz": "0a4638c46702d9517d5581059de032c9694e2311aee149aa665c36eb1ee09a61"
+    "engine.js": "4573a0c68f0f0cbf2fa6de927d58a9a0dd1471ac0548aab2f29aec1d7d4a7234",
+    "engine.wasm": "dc2f1b72e4fa4e93605dbe0a589c76611789ce9ce1c6dffb6fa491f420ea03bd",
+    "corresponding-source.tar.gz": "60dd2623975f1aa7cf40bd619a3d8df80715663e575153e1625bc7090736d713"
   },
   "modifiedUpstreamFiles": [
     "essentia/wscript: add -fexceptions"
