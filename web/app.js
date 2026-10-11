@@ -5,9 +5,10 @@ for (let slice = 0; slice < 17; slice++) {
   const part = document.createElement('i'); part.style.setProperty('--slice', slice); element('ring').append(part);
 }
 function stop() { worker?.terminate(); worker = null; clearTimeout(timer); timer = null; busy = false; }
-function fail(message) { stop(); element('error').textContent = message; element('error').hidden = false; element('cancel').hidden = true; element('upload').hidden = false; element('headline').textContent = 'Yeniden dene'; }
+function fail(message) { stop(); element('sculpture').dataset.busy = 'false'; element('error').textContent = message; element('error').hidden = false; element('cancel').hidden = true; element('upload').hidden = false; element('headline').textContent = 'Yeniden dene'; }
 function reset() {
   serial++; stop(); currentResult = null; element('results').hidden = true; element('prompt').hidden = false;
+  element('status').textContent = '';
   element('error').hidden = true; element('cancel').hidden = true; element('upload').hidden = false;
   element('headline').textContent = 'Sesi sürükle'; element('drop').dataset.result = 'false';
   element('sculpture').dataset.busy = 'false'; element('sculpture').dataset.done = 'false';
