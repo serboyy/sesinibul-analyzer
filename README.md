@@ -2,7 +2,8 @@
 
 An independent browser-local BPM and major/minor key analyzer. No login,
 payment APIs, user data, recordings, uploads or secrets are part of this project.
-This project is **not yet a production release**.
+The independent frontend and source-pinned engine can be served as static
+assets. The private membership application is not part of this repository.
 
 License: AGPL-3.0-or-later; see LICENSE. No warranty or accuracy guarantee.
 Essentia algorithms and vendored dependencies retain their original notices.
@@ -29,3 +30,14 @@ repository, including its complete corresponding-source archive and provenance.
 Real-music browser regressions and mobile execution must be tested on the
 actual built binary before release. Tests of the old npm WASM binary do not
 prove accuracy of this new source build.
+
+## Static release
+
+`node export-release.mjs /absolute/static-output/analyzer` verifies the binary
+hashes and exports only an explicit list of frontend/engine/license assets.
+Serve `web/production.html` at the homepage while retaining the
+`/analyzer/web/` and `/analyzer/dist/` asset paths. Keep the visible repository
+and corresponding-source download links. The production HTML retains canonical
+metadata, guide/legal links and local audio processing; it does not load ads or
+tracking scripts. Instrument Sans remains under its own OFL license in
+`web/fonts/OFL.txt`, not AGPL.
