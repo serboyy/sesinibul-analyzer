@@ -100,4 +100,5 @@
 .article p{margin:14px 0}.article a{text-decoration:underline;text-underline-offset:4px}
 .article nav{display:flex;flex-wrap:wrap;gap:12px;font-size:16px}.article .primary{margin-top:24px;text-decoration:none}
 .sculpture[data-paused="true"] .float,.sculpture[data-paused="true"] .objectShadow,.sculpture[data-paused="true"] .ring{animation-play-state:paused}
-body{margin:0}.page{font-family:system-ui,sans-serif} [hidden]{display:none!important}
+@font-face{font-family:Instrument Sans;src:url('fonts/InstrumentSans.ttf') format('truetype');font-weight:400 700;font-style:normal;font-display:swap}
+html{overflow-x:clip}body{margin:0;overflow-x:clip}.page{font-family:Instrument Sans,system-ui,sans-serif} [hidden]{display:none!important}

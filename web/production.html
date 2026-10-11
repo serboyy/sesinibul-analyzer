@@ -1,0 +1,53 @@
+<!doctype html>
+<!-- Copyright (C) 2026 Sesini Bul. SPDX-License-Identifier: AGPL-3.0-or-later -->
+<html lang="tr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <base href="/analyzer/web/">
+  <title>BPM ve Ton Bulma (Key Finder) — Ücretsiz Şarkı Analizi | Sesini Bul</title>
+  <meta name="description" content="MP3 veya WAV yükle; şarkının BPM, tempo ve majör/minör tonunu ücretsiz bul. Üyeliksiz online key finder. Ses dosyan cihazında kalır.">
+  <meta name="robots" content="index,follow,max-image-preview:large">
+  <meta name="theme-color" content="#e1e6dc">
+  <meta name="google-adsense-account" content="ca-pub-9769463427829895">
+  <link rel="canonical" href="https://sesinibul.com/">
+  <link rel="icon" href="/icon">
+  <link rel="manifest" href="/manifest.webmanifest">
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="tr_TR">
+  <meta property="og:site_name" content="Sesini Bul">
+  <meta property="og:url" content="https://sesinibul.com/">
+  <meta property="og:title" content="BPM ve Ton Bulma — Ücretsiz Şarkı Analizi">
+  <meta property="og:description" content="Ses dosyanı yükle, BPM ve tonunu bul. Dosyan cihazında kalır.">
+  <meta property="og:image" content="https://sesinibul.com/opengraph-image?design=bpm-stage-v2">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="BPM ve Ton Bulma — Sesini Bul">
+  <meta name="twitter:description" content="Ücretsiz, üyeliksiz BPM ve ton analizi.">
+  <meta name="twitter:image" content="https://sesinibul.com/opengraph-image?design=bpm-stage-v2">
+  <link rel="stylesheet" href="style.css">
+  <script src="app.js" defer></script>
+  <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"Organization","@id":"https://sesinibul.com/#organization","name":"Sesini Bul","url":"https://sesinibul.com","logo":"https://sesinibul.com/icon"},{"@type":"WebSite","@id":"https://sesinibul.com/#website","name":"Sesini Bul","url":"https://sesinibul.com","inLanguage":"tr-TR","publisher":{"@id":"https://sesinibul.com/#organization"}},{"@type":"WebApplication","@id":"https://sesinibul.com/#webapp","name":"Sesini Bul BPM ve Ton Bulma","url":"https://sesinibul.com/","applicationCategory":"MultimediaApplication","operatingSystem":"Web","inLanguage":"tr-TR","isAccessibleForFree":true,"offers":{"@type":"Offer","price":"0","priceCurrency":"TRY"},"publisher":{"@id":"https://sesinibul.com/#organization"}}]}</script>
+</head>
+<body class="page">
+<header class="header"><a class="brand" href="/" aria-label="Sesini Bul ana sayfa"><svg width="31" height="31" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" aria-hidden="true"><path d="M2 10v4M6 6v12M10 3v18M14 8v8M18 5v14M22 10v4"/></svg>sesini bul.</a><nav aria-label="Ana menü"><a class="matchLink" href="/eslesme">Müzisyenlerle eşleş ↗</a></nav></header>
+<main id="main-content">
+<section class="tool" id="analiz" aria-label="BPM ve ton analiz aracı">
+  <input class="fileInput" id="file" type="file" accept=".mp3,.wav,.m4a,.aac,.ogg,.flac,audio/*" aria-label="Analiz edilecek ses dosyası">
+  <div class="dropzone" id="drop" data-result="false">
+    <div class="sculpture" id="sculpture" aria-hidden="true"><div class="objectShadow"></div><div class="tilt"><div class="float"><div class="ring" id="ring"></div></div></div></div>
+    <div class="sceneControls">
+      <div id="prompt"><div class="centerPrompt"><p class="sceneLabel">BPM & KEY</p><h1 id="headline">Sesi sürükle</h1></div><div class="uploadControls"><button class="primary" id="upload">Dosya yükle</button><button class="secondary" id="cancel" hidden>İptal et</button><p class="formats">Ücretsiz · 40 MB’a kadar</p></div></div>
+      <p class="status" id="status" role="status" aria-live="polite"></p><p class="error" id="error" role="alert" hidden></p>
+      <div class="results" id="results" hidden><h1 class="sceneLabel">BPM & KEY</h1><p class="filename" id="filename"></p><div class="resultGrid"><div class="tempo"><span>Tempo / BPM</span><strong id="bpm"></strong><p>Dakikadaki vuruş</p></div><div class="key"><span>Olası ton / Key</span><strong id="key"></strong><p>Majör / minör ton tahmini</p></div></div><p class="resultNote" id="note"></p><div class="resultActions"><button class="primary" id="another">Başka dosya seç</button><button class="secondary" id="copy">Sonuçları kopyala</button></div></div>
+    </div>
+  </div>
+  <p class="privacy">Dosyan cihazında kalır.</p>
+  <details class="info"><summary>Bilgi</summary><p>MP3, WAV, M4A, AAC, OGG ve FLAC. 8 saniye–10 dakika arası kayıtlar; en fazla 40 MB. Kaydın tamamı tarayıcında analiz edilir. BPM en yakın tam sayı olarak gösterilir. Sonuçlar tahminidir; ton ve tempo kulağınla doğrulanmalıdır. Makam analizi yapılmaz. Biçim desteği tarayıcıya göre değişir.</p></details>
+</section>
+<section class="guide" aria-label="BPM ve ton bulma hakkında"><details><summary>BPM ve ton nasıl bulunur?</summary><h2>Ücretsiz BPM ve key bulma</h2><p>Ses dosyanı sürükle veya Dosya yükle düğmesini kullan. Analiz cihazında yapılır; ses dosyan sunucuya gönderilmez.</p><h3>BPM ne demek?</h3><p>BPM, dakikadaki vuruş sayısıdır. Algoritmalar ritmin yarım veya çift sayımını tercih edebilir; sonucu dinleyerek kontrol et.</p><h3>Ton sonucu ne kadar kesin?</h3><p>Majör veya minör ton tahminidir. Perküsyon ağırlıklı, yalnız vokal içeren, ton değiştiren veya makamsal kayıtlarda sonuç belirsiz olabilir. Kesinlik garantisi verilmez.</p></details><nav class="guideLinks" aria-label="Müzik analiz rehberleri"><a href="/rehber/bpm-nedir">BPM nedir?</a><a href="/rehber/sarki-tonu-nasil-bulunur">Şarkının tonu nasıl bulunur?</a></nav></section>
+</main>
+<footer class="footer"><nav aria-label="Alt menü"><a href="/hakkinda">Hakkında</a><a href="/iletisim">İletişim</a><a href="/auth">Üye girişi</a><a href="/legal/privacy">Gizlilik</a><a href="/legal/terms">Koşullar</a><a href="/legal/cookies">Çerezler</a><a href="https://github.com/serboyy/sesinibul-analyzer">Analiz kaynak kodu</a><a href="https://raw.githubusercontent.com/serboyy/sesinibul-analyzer/504f5a2/dist/corresponding-source.tar.gz">Motor kaynaklarını indir</a></nav></footer>
+<noscript><p>Ses analizi için tarayıcında JavaScript’i etkinleştirmen gerekiyor.</p></noscript>
+</body></html>

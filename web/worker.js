@@ -16,10 +16,14 @@ self.onmessage = async ({ data }) => {
     self.postMessage({ type: 'stage', percent: 30, stage: 'BPM ve ton hesaplanıyor' });
     if (engine._sb_analyze(pointer, samples.length) !== 0) throw new Error('Ses analiz edilemedi. Başka bir dosyayla dene.');
     const value = JSON.parse(engine.UTF8ToString(engine._sb_result()));
+    const names = { C: 'Do / C', 'C#': 'Do♯ / C♯', Db: 'Re♭ / D♭', D: 'Re / D',
+      'D#': 'Re♯ / D♯', Eb: 'Mi♭ / E♭', E: 'Mi / E', F: 'Fa / F',
+      'F#': 'Fa♯ / F♯', Gb: 'Sol♭ / G♭', G: 'Sol / G', 'G#': 'Sol♯ / G♯',
+      Ab: 'La♭ / A♭', A: 'La / A', 'A#': 'La♯ / A♯', Bb: 'Si♭ / B♭', B: 'Si / B' };
     self.postMessage({ type: 'result', result: {
       bpm: Number.isFinite(value.bpm) ? Math.round(value.bpm) : null,
-      key: value.key && ['major', 'minor'].includes(value.scale)
-        ? value.key + (value.scale === 'major' ? ' majör' : ' minör') : null,
+      key: names[value.key] && ['major', 'minor'].includes(value.scale)
+        ? names[value.key] + (value.scale === 'major' ? ' majör' : ' minör') : null,
       alternateKey: null, seconds: samples.length / 16000,
     } });
   } catch (error) {
