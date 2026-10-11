@@ -1,0 +1,28 @@
+{
+  "sources": {
+    "essentia": {
+      "repository": "https://github.com/MTG/essentia.git",
+      "revision": "c6a28b0b7e540019a3676bd3322c8b94b06e66b1"
+    },
+    "eigen": {
+      "repository": "https://gitlab.com/libeigen/eigen.git",
+      "revision": "3147391d946bb4b6c68edd901f2add6ac1f31f8c"
+    },
+    "emsdk": {
+      "repository": "https://github.com/emscripten-core/emsdk.git",
+      "revision": "0b3bcbc3b005cbb811d48e497eabcc6846d43001"
+    }
+  },
+  "compiler": "Emscripten 3.1.64",
+  "sha256": {
+    "engine.js": "298840eaab56d044ea3c06b5be4f71107000f7f8c28ce22d11cf82b54f9d4971",
+    "engine.wasm": "7dc24cc715204884bb32842d223a83d5bfe9a796a01c146e4b39683dbe224123",
+    "corresponding-source.tar.gz": "0a4638c46702d9517d5581059de032c9694e2311aee149aa665c36eb1ee09a61"
+  },
+  "modifiedUpstreamFiles": [
+    "essentia/wscript: add -fexceptions"
+  ],
+  "algorithmChanges": false,
+  "pretrainedModels": false,
+  "license": "AGPL-3.0-or-later; dependency notices included in source archive"
+}
