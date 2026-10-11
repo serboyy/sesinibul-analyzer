@@ -33,7 +33,7 @@ emconfigure python3 waf configure --emscripten --build-static --lightweight= --f
 emmake python3 waf build -j2
 em++ -Oz -std=c++14 -fexceptions "$task_root/engine.cpp" build/src/libessentia.a \
   -Isrc -Isrc/essentia -Isrc/essentia/scheduler -Isrc/essentia/streaming \
-  -Isrc/essentia/streaming/algorithms -Isrc/essentia/utils -Isrc/3rdparty \
+  -Isrc/essentia/streaming/algorithms -Isrc/essentia/utils -Isrc/3rdparty -I"$task_build/eigen" -DEIGEN_MPL2_ONLY \
   -DSB_ESSENTIA_REVISION=\""$essentia_revision"\" \
   -s MODULARIZE=1 -s EXPORT_NAME=SBEngine -s ENVIRONMENT=web,worker,node \
   -s DYNAMIC_EXECUTION=0 -s ALLOW_MEMORY_GROWTH=1 -s MAXIMUM_MEMORY=268435456 \
