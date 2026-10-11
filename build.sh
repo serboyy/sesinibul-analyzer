@@ -27,7 +27,7 @@ mkdir -p "$task_build/pkgconfig"
 python3 "$task_root/prepare-build.py" "$task_build" "$eigen_revision"
 export PKG_CONFIG_PATH="$task_build/pkgconfig"
 cd "$task_build/essentia"
-emconfigure python3 waf configure --build-static --lightweight= --fft=KISS \
+emconfigure python3 waf configure --emscripten --build-static --lightweight= --fft=KISS --pkg-config-path="$task_build/pkgconfig" \
   --ignore-algos=Spline,CubicSpline,NNLSChroma,SNR \
   --include-algos=PercivalBpmEstimator,PercivalEnhanceHarmonics,PercivalEvaluatePulseTrains,KeyExtractor,FrameCutter,Windowing,Spectrum,Magnitude,FFT,UnaryOperator,Flux,IIR,AutoCorrelation,PeakDetection,SpectralPeaks,SpectralWhitening,HPCP,Key,NoiseAdder
 emmake python3 waf build -j2
