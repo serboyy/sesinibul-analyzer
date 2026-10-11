@@ -12,7 +12,7 @@ root = Path(__file__).resolve().parent
 build = root / '.build'
 dist = root / 'dist'
 own_paths = ['LICENSE', 'README.md', '.gitignore', 'engine.cpp', 'build.sh',
-             'prepare-build.py', 'package-source.py', 'tests', '.github', 'web']
+             'prepare-build.py', 'package-source.py', 'export-release.mjs', 'tests', '.github', 'web']
 
 def revision(path):
     return subprocess.check_output(['git', '-C', str(path), 'rev-parse', 'HEAD'], text=True).strip()
