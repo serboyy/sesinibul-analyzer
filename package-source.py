@@ -71,8 +71,9 @@ with (dist / 'corresponding-source.tar.gz').open('wb') as raw:
 hashes = {name: hashlib.sha256((dist / name).read_bytes()).hexdigest()
           for name in ['engine.js', 'engine.wasm', 'corresponding-source.tar.gz']}
 provenance = {'sources': sources, 'compiler': 'Emscripten 3.1.64', 'sha256': hashes,
-              'modifiedUpstreamFiles': ['essentia/wscript: add -fexceptions'],
-              'algorithmChanges': False, 'pretrainedModels': False,
+              'modifiedUpstreamFiles': ['essentia/wscript: add -fexceptions',
+                  'essentia/src/algorithms/rhythm/percivalevaluatepulsetrains.cpp: resize score vectors before indexed writes'],
+              'algorithmChanges': True, 'pretrainedModels': False,
               'license': 'AGPL-3.0-or-later; dependency notices included in source archive'}
 (dist / 'provenance.json').write_text(json.dumps(provenance, indent=2) + '\n')
 print('Corresponding source and provenance packaged:', json.dumps(hashes))

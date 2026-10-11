@@ -15,7 +15,10 @@ under its applicable licenses.
 pkg-config and Node available. It installs the pinned official Emscripten SDK
 inside `.build`, fetches pinned Essentia and Eigen sources, builds only the
 required algorithm graph with FFTW 3.3.11, and runs smoke tests. Compiler flags
-are modified explicitly by `prepare-build.py`; algorithms are not modified.
+are modified explicitly by `prepare-build.py`. It also fixes an upstream
+PercivalEvaluatePulseTrains allocation defect: score vectors must be resized,
+not merely reserved, before indexed writes and summation. All patches are
+included in the corresponding source and recorded in provenance.
 The new C API avoids legacy JavaScript runtime dynamic compilation.
 
 The manual workflow uses a standard Ubuntu runner **only for a public repo**.
