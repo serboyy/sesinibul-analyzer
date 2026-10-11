@@ -20,13 +20,14 @@
   "compiler": "Emscripten 3.1.64",
   "sha256": {
     "engine.js": "4573a0c68f0f0cbf2fa6de927d58a9a0dd1471ac0548aab2f29aec1d7d4a7234",
-    "engine.wasm": "dc2f1b72e4fa4e93605dbe0a589c76611789ce9ce1c6dffb6fa491f420ea03bd",
-    "corresponding-source.tar.gz": "60dd2623975f1aa7cf40bd619a3d8df80715663e575153e1625bc7090736d713"
+    "engine.wasm": "0bc2228ad295b7c493ba0518cad8a471c5d28936926c8ea1198d1c32ee8bde58",
+    "corresponding-source.tar.gz": "2a9cc0a96243d1d4a5bd7e74a22189fdffa3afdf8c343227f6a8a7b2491165e6"
   },
   "modifiedUpstreamFiles": [
-    "essentia/wscript: add -fexceptions"
+    "essentia/wscript: add -fexceptions",
+    "essentia/src/algorithms/rhythm/percivalevaluatepulsetrains.cpp: resize score vectors before indexed writes"
   ],
-  "algorithmChanges": false,
+  "algorithmChanges": true,
   "pretrainedModels": false,
   "license": "AGPL-3.0-or-later; dependency notices included in source archive"
 }
